@@ -1,0 +1,41 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div *ngIf="cartItems.length>0">
+            <table class="table table-bordered">
+                <tr>
+                    <th width="20%">Product image</th>
+                    <th width="50%">Product details</th>
+                    <th width="30%"></th>
+                </tr>
+                <tr *ngFor="let tempItem of cartItems">
+                    <td><img src="{{tempItem.imageUrl}}" class="img-responsive" width="150px" /></td>
+                    <td>
+                        <p>{{tempItem.name}}</p>
+                        <p>{{tempItem.unitPrice | currency: 'USD'}}</p>
+                    </td>
+                    <td>
+                        <div class="items">
+                            <label>Quantity</label>
+                            <p> <button (click)="incrementQuantity(tempItem)"
+                                    class="btn btn-primary btn-small">&plus;</button> {{tempItem.quantity}} <button
+                                    (click)="decrementQuantity(tempItem)"
+                                    class="btn btn-primary btn-small">&minus;</button> </p>
+                        </div>
+                        <p class="mt2">Subtotal: </p> {{tempItem.quantity * tempItem.unitPrice | currency:'USD'}}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td style="font-weight: bold;">
+                        <p>Total quantity: {{totalQuantity}}</p>
+                        <p>Total price: {{totalPrice | currency:'USD'}}</p>
+                        <p><a routerLink="/checkout" class="btn btn-primary btn-small">Checkout</a></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="cartItems.length==0" class="alert alert-warning col-md-12" role="alert">
+            Shopping cart is empty.
+        </div>
+    </div>
+</div>
