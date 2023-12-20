@@ -3,12 +3,11 @@ package com.truesolution.ecommerceangularjava.controller;
 import com.truesolution.ecommerceangularjava.dto.Purchase;
 import com.truesolution.ecommerceangularjava.dto.PurchaseResponse;
 import com.truesolution.ecommerceangularjava.service.CheckoutService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api/checkout")
+@CrossOrigin("http://localhost:4200")
 public class CheckoutController {
     private CheckoutService checkoutService;
 
